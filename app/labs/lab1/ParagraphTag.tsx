@@ -1,6 +1,6 @@
 export default function ParagraphTag() {
     return (
-        <div id="wd-paragraph-tag">
+        <div id="wd-p-tag">
             <h2>Paragraph Tag</h2>
             <p id="wd-p-1">
                 This is a paragraph. We often separate a long set of sentences with

@@ -1,6 +1,6 @@
 export default function HeadingTags() {
   return (
-    <div id="wd-heading-tags">
+    <div id="wd-h-tags">
       <h2>Heading Tags</h2>
       <h1>Heading 1</h1>
       <h2>Heading 2</h2>
