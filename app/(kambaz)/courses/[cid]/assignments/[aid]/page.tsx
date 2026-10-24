@@ -1,11 +1,14 @@
 import Link from "next/link";
+import * as db from "../../../../database";
 
 export default async function AssignmentEditor({
     params,
 }: {
     params: Promise<{ cid: string; aid: string }>;
 }) {
-    const { cid } = await params;
+    const { cid, aid } = await params;
+    const assignment = db.assignments.find((a) => a._id === aid);
+
     return (
         <div id="wd-assignments-editor">
             <div className="mb-4">
@@ -14,25 +17,18 @@ export default async function AssignmentEditor({
                 </label>
                 <input
                     id="wd-name"
-                    defaultValue="A1 - ENV + HTML"
+                    defaultValue={assignment?.title ?? ""}
                     className="w-full rounded border border-neutral-300 p-2 text-sm focus:border-blue-500 focus:outline-none"
                 />
+                <p className="mt-1 text-xs text-neutral-500">
+                    Assignment id: {aid}
+                </p>
             </div>
             <div className="mb-4">
                 <textarea
                     id="wd-description"
                     rows={4}
-                    defaultValue={`The assignment is available online
-
-                                    Submit a link to the landing page of your Web application running on Netlify.
-
-                                    The landing page should include the following:
-                                    • Your full name and section
-                                    • Links to each of the lab assignments
-                                    • Link to the Kanbas application
-                                    • Links to all relevant source code repositories
-
-                                    The Kanbas application should include a link to navigate back to the landing page.`}
+                    defaultValue={assignment?.description ?? ""}
                     className="w-full rounded border border-neutral-300 p-2 text-sm focus:border-blue-500 focus:outline-none"
                 />
             </div>
@@ -43,7 +39,7 @@ export default async function AssignmentEditor({
                 <div className="md:col-span-3">
                     <input
                         id="wd-points"
-                        defaultValue={100}
+                        defaultValue={assignment?.points ?? 100}
                         className="w-full rounded border border-neutral-300 p-2 text-sm focus:border-blue-500 focus:outline-none"
                     />
                 </div>
@@ -133,7 +129,7 @@ export default async function AssignmentEditor({
                         <input
                             id="wd-due-date"
                             type="date"
-                            defaultValue="2024-05-13"
+                            defaultValue={assignment?.due ?? ""}
                             className="w-full rounded border border-neutral-300 p-2 text-sm focus:border-blue-500 focus:outline-none"
                         />
                     </div>
@@ -145,7 +141,7 @@ export default async function AssignmentEditor({
                             <input
                                 id="wd-available-from"
                                 type="date"
-                                defaultValue="2024-05-06"
+                                defaultValue={assignment?.available ?? ""}
                                 className="w-full rounded border border-neutral-300 p-2 text-sm focus:border-blue-500 focus:outline-none"
                             />
                         </div>
