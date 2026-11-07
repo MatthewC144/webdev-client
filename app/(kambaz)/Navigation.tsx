@@ -40,8 +40,6 @@ export default function KambazNavigation() {
           className="mx-auto"
         />
       </a>
-
-      {/* Account 作為特殊獨立案例 */}
       <Link
         href="/account"
         id="wd-account-link"
