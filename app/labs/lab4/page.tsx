@@ -15,6 +15,8 @@ import PropDrilling from "./PropDrilling";
 import UrlEncoding from "./UrlEncoding";
 import ContextExamples from "./context/ContextExamples";
 import ContextProfileForm from "./context/ContextProfileForm";
+import ZustandExamples from "./zustand/ZustandExamples";
+import ReduxExamples from "./redux/ReduxExamples";
 export default function lab4() {
   const sayHello = (message: string) => {
     alert(message);
@@ -49,6 +51,8 @@ export default function lab4() {
       <UrlEncoding />
       <ContextExamples />
       <ContextProfileForm />
+      <ZustandExamples />
+      <ReduxExamples />
     </div>
   );
 }
